@@ -11,34 +11,34 @@
 
   <body>
     <header>
-      <h1>Bookers</h1>
-      <nav>
+      <h1 class="header-top">Bookers</h1>
+      <nav class="header-bottom">
        <ul class="nav-list">
       <% if user_signed_in? %>
         <li class="nav-list-item">
-          <%= link_to "Home", books_path %>
+          <%= link_to "logout", destroy_user_session_path, :style=>"color:gray;", method: :delete %>
         </li>
-        <li>
-          <%= link_to "User", users_path %>
+        <li class="nav-list-item">
+          <%= link_to "Books", books_path, :style=>"color:gray;" %>
         </li>
-        <li>
-          <%= link_to "Books", books_path %>
+        <li class="nav-list-item">
+          <%= link_to "User", users_path, :style=>"color:gray;" %>
         </li>
-        <li>
-          <%= link_to "logout", destroy_user_session_path, method: :delete %>
+        <li class="nav-list-item">
+          <%= link_to "Home", user_path(current_user),:style=>"color:gray;"  %>
         </li>
       <% else %>
-        <li>
-          <%= link_to "Home", new_book_path %>
+        <li class="nav-list-item">
+          <%= link_to "login", new_user_session_path, :style=>"color:gray;" %>
         </li>
-        <li>
-          <%= link_to "About", new_book_path %>
+        <li class="nav-list-item">
+          <%= link_to "sign up", new_user_registration_path, :style=>"color:gray;" %>
         </li>
-        <li>
-          <%= link_to "sign up", new_user_registration_path %>
+        <li class="nav-list-item">
+          <%= link_to "About", new_book_path, :style=>"color:gray;" %>
         </li>
-        <li>
-          <%= link_to "login", new_user_session_path %>
+        <li class="nav-list-item">
+          <%= link_to "Home", new_book_path, :style=>"color:gray;" %>
         </li>
         <% end %>
        </ul>
