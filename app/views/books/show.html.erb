@@ -30,11 +30,15 @@
  	<th></th>
  	<th></th>
  	<th></th>
+  <th></th>
+  <th></th>
  </tr>
  <tr>
  	<td><%= attachment_image_tag current_user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
  	<td><%= @books.title %></td>
  	<td><%= @books.body %></td>
+  <td><%= link_to "edit", edit_book_path %></td>
+  <td><%= link_to "destroy", book_path(@books.id), method: :delete, "data-confirm" => "Are you sure？"%></td>
  </tr>
  <tr>
  	<td><%= @user.name %></td>

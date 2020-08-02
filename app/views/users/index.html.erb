@@ -14,7 +14,7 @@
 <h1>User info</h1>
 <div>
 <h4>Image</h4>
-  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %>
 <h4>name</h4>
   <%= @user.name %>
 <h4>introduction</h4>
@@ -32,8 +32,8 @@
 <% end %>
 
 <h1>Books</h1>
+<% @books.each do |book| %>
  <table>
-  <% @books.each do |book| %>
    <tr>
     <td>Image</td>
     <td>title</td>
@@ -41,7 +41,8 @@
    </tr>
    <tr>
      <td><%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
-     <td><%= link_to book.title, book_path(current_user) %></td>
+     <td><%= book.title %></td>
      <td><%= book.body %></td>
    </tr>
-  <% end %>
+  </table>
+<% end %>
