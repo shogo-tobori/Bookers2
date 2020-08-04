@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
 * {
   margin: 0;
   padding: 0;
@@ -56,17 +59,14 @@ header{
   margin:0 auto;
 }
 
-.blog {
-  width: 300px;
+.col-lg-4 {
   height: 800px;
   float: left;
 }
 
-.sidebar {
-  width: 600px;
+.col-lg-8 {
   height: 600px;
   float: left;
-  padding-left: 100px
 }
 
 .bookcomment {
