@@ -25,7 +25,7 @@
           <%= link_to "User", users_path, :style=>"color:gray;" %>
         </li>
         <li class="nav-list-item">
-          <%= link_to "Home", users_path(params[:id]),:style=>"color:gray;"  %>
+          <%= link_to "Home", user_path(current_user), :style=>"color:gray;"  %>
         </li>
       <% else %>
         <li class="nav-list-item">

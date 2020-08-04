@@ -9,17 +9,24 @@ class UsersController < ApplicationController
   end
 
   def create
+    # 部分テンプレート
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
-    redirect_to user_path
+    if @book.save
+      flash[:notice] = "You have creatad book successfully"
+      redirect_to users_path(@book.id)
+      else
+        @books = Book.all
+        render "index"
+    end
   end
 
 	def show
+    # 部分テンプレート
     @book = Book.new
-    @users = User.all
-    @user = current_user
-    @books = Book.where(user_id: current_user)
+    @user = User.find(params[:id])
+    # ページ内容
+    @books = @user.books
   end
 
   def edit
@@ -28,7 +35,7 @@ class UsersController < ApplicationController
 
   def update
     	@user = User.find(current_user.id)
-    	@user.update(user_params)
+    	@user.update(book_params)
     	redirect_to user_path(@user.id)
   end
 
