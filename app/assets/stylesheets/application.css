@@ -49,3 +49,7 @@ header{
   float: right;
   color: gray;
 }
+
+.bookcomment {
+  padding-right: 120px
+}

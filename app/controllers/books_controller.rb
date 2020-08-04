@@ -1,10 +1,11 @@
 class BooksController < ApplicationController
-	def new
-	end
+
 	def index
+      # 部分テンプレート
+      @book = Book.new
+      @user = current_user
+      # ページ内容
 	  @books = Book.all
-	  @book = Book.new
-	  @user = current_user
 	end
 
 	def create
