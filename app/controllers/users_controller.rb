@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 
+  def top
+  end
+
+  def about
+  end
+
   def index
     # 部分テンプレート
     @book = Book.new
@@ -38,6 +44,7 @@ class UsersController < ApplicationController
     @user.update(book_params)
     flash[:notice] = "You have updated user successfully."
     redirect_to user_path(@user.id)
+  end
 
   	private
   	def book_params
