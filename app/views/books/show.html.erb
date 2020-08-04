@@ -1,48 +1,33 @@
-<% if flash[:notice] %>
-  <div class="flash">
-  	<%= flash[:notice] %>
+<div class="main">
+  <div class="blog">
+
+    <%= render 'users/list', user: @user, book: @book %>
+
   </div>
-<% end %>
-
-<h1>User info</h1>
-<div>
- <h4>Image</h4>
-  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
- <h4>name</h4>
-  <%= @user.name %>
- <h4>introduction</h4>
-  <%= @user.introduction %>
+  <div class="sidebar">
+    <h1>Books detail</h1>
+      <table>
+        <tr>
+          <th></th>
+ 	        <th></th>
+ 	        <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+ 	        <td><%= attachment_image_tag current_user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
+ 	        <td><%= @books.title %></td>
+ 	        <td><%= @books.body %></td>
+          <td><%= link_to 'edit', edit_book_path(@books) %></td>
+          <td><%= link_to 'Destroy', book_path(@books), method: :delete, "data-confirm" => "Are you sure？" %></td>
+        </tr>
+        <tr>
+          <td><%= link_to(@books.user.name, user_path(@user))%></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
 </div>
-  <%= link_to "setting", edit_user_path(:id) %>
-
- <%= form_for(@book) do |f| %>
-  <h1>New book</h1>
-  <h4>Title</h4>
-   <%= f.text_field :title %>
-  <h4>Opinion</h4>
-   <%= f.text_area :body %>
-   <%= f.submit 'Create Book' %>
- <% end %>
-
-<h1>Books detail</h1>
-<table>
- <tr>
- 	<th></th>
- 	<th></th>
- 	<th></th>
-  <th></th>
-  <th></th>
- </tr>
- <tr>
- 	<td><%= attachment_image_tag current_user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
- 	<td><%= @books.title %></td>
- 	<td><%= @books.body %></td>
-  <td><%= link_to "edit", edit_book_path %></td>
-  <td><%= link_to "destroy", book_path(@books.id), method: :delete, "data-confirm" => "Are you sure？"%></td>
- </tr>
- <tr>
- 	<td><%= @user.name %></td>
- 	<td></td>
- 	<td></td>
- </tr>
-</table>
