@@ -1,30 +1,22 @@
-<div class="main">
- <div class="blog">
-  <div class="col-lg-2">
-
-  <%= render 'books/list' %>
-
+<div class="container">
+  <div class="col-lg-3">
+    <%= render 'books/list' %>
   </div>
- </div>
- <div class="sidebar">
-  <div class="col-lg-10">
-      <div class="container">
-      <h1>Books</h1>
-      <table class="table">
-          <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Opinion</th>
-          </tr>
-          <tr>
-            <% @books.each do |book| %>
-            <td><%= attachment_image_tag @user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
-            <td><%= link_to(book.title, book_path(book)) %></td>
-            <td><%= book.body %></td>
-          </tr>
+  <div class="col-lg-9">
+    <h1>Books</h1>
+    <table class="table">
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Opinion</th>
+      </tr>
+      <tr>
+        <% @books.each do |book| %>
+        <td><%= attachment_image_tag @user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
+        <td><%= link_to(book.title, book_path(book)) %></td>
+        <td><%= book.body %></td>
+      </tr>
         <% end %>
-      </table>
+    </table>
     </div>
-  </div>
- </div>
 </div>
