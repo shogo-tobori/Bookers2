@@ -1,33 +1,33 @@
 class BooksController < ApplicationController
+# 確認済み
+def index
+  # 部分テンプレート
+  @book = Book.new
+  @user = current_user
+  # ページ内容
+  @books = Book.all
+end
 
-	def index
-  	# 部分テンプレート
-    @book = Book.new
-    @user = current_user
-  	# ページ内容
-    @books = Book.all
-	end
-
-	def create
-		@book = Book.new(book_params)
-		@book.user_id = current_user.id
-    @user = current_user
-		if @book.save
-			flash[:notice] = "You have creatad book successfully"
-			redirect_to book_path(@book.id)
+def create
+	@book = Book.new(book_params)
+	@book.user_id = current_user.id
+    if @book.save
+      flash[:notice] = "You have creatad book successfully"
+      redirect_to book_path(@book)
     else
       @books = Book.all
+      @user = current_user
       render :index
     end
-	end
+end
 
-  def show
-  	# 部分テンプレート
-
-    	@user = current_user
-    # ページ内容
-		  @book = Book.find(params[:id])
-	end
+def show
+  # 部分テンプレート
+  @book = Book.new
+  # ページ内容
+	@books = Book.find(params[:id])
+  @user = @books.user
+end
 
 	def edit
     	@book = Book.find(params[:id])
@@ -36,6 +36,7 @@ class BooksController < ApplicationController
 	def update
 		book = Book.find(params[:id])
 		book.update(book_params)
+    flash[:notice] = "You have updated user successfully."
 		redirect_to book_path(book)
 	end
 

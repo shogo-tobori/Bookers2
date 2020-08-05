@@ -2,37 +2,38 @@
   <div class="blog">
     <div class="col-lg-4">
 
-    <%= render 'users/list', user: @user, book: @book %>
+      <%= render 'books/list'%>
 
     </div>
-  <div class="sidebar">
-   <div class="col-lg-8">
-    <h1>Books detail</h1>
-      <table>
-        <tr>
-          <th></th>
- 	        <th></th>
- 	        <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-        <tr>
- 	        <td><%= attachment_image_tag current_user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
- 	        <td><%= @book.title %></td>
- 	        <td><%= @book.body %></td>
-          <% if @book.user.id == current_user.id %>
-            <td><%= link_to 'edit', edit_book_path(@book) %></td>
-            <td><%= link_to 'Destroy', book_path(@book), method: :delete, "data-confirm" => "Are you sure？" %></td>
+      <div class="sidebar">
+        <div class="col-lg-8">
+          <h1>Book detail</h1>
+        <table>
+          <tr>
+            <th></th>
+ 	          <th></th>
+ 	          <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr>
+ 	          <td><%= attachment_image_tag @books.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
+ 	          <td><%= link_to(@books.title,book_path(@books)) %></td>
+ 	          <td><%= @books.body %></td>
+          <% if @books.user.id == current_user.id %>
+            <td><%= link_to 'edit', edit_book_path(@books) %></td>
+            <td><%= link_to 'Destroy', book_path(@books), method: :delete, "data-confirm" => "Are you sure？" %></td>
           <% end %>
-        </tr>
-        <tr>
-          <td><%= link_to(@book.user.name, user_path(@user))%></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </table>
+          </tr>
+          <tr>
+            <td><%= link_to(@books.user.name, user_path(@user))%></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+        </div>
+      </div>
   </div>
- </div>
 </div>
