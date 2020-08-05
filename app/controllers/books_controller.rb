@@ -1,41 +1,42 @@
 class BooksController < ApplicationController
 
 	def index
-  # 部分テンプレート
+  	# 部分テンプレート
     @book = Book.new
     @user = current_user
-  # ページ内容
+  	# ページ内容
     @books = Book.all
 	end
 
 	def create
 		@book = Book.new(book_params)
 		@book.user_id = current_user.id
+    @user = current_user
 		if @book.save
 			flash[:notice] = "You have creatad book successfully"
 			redirect_to book_path(@book.id)
-	   	else
-	   		@books = Book.all
-	   		render "index"
-	  end
+    else
+      @books = Book.all
+      render :index
+    end
 	end
 
-  	def show
+  def show
   	# 部分テンプレート
-		@book = Book.new
+
     	@user = current_user
     # ページ内容
-		@books = Book.find(params[:id])
+		  @book = Book.find(params[:id])
 	end
 
 	def edit
     	@book = Book.find(params[:id])
-    end
+  end
 
 	def update
 		book = Book.find(params[:id])
 		book.update(book_params)
-		redirect_to user_path(user)
+		redirect_to book_path(book)
 	end
 
 	def destroy

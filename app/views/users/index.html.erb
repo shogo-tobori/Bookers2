@@ -1,10 +1,13 @@
 <div class="main">
   <div class="blog">
+    <div class="col-lg-4">
 
-<%= render 'users/list', user: @user, book: @book %>
+    <%= render 'users/list', user: @user, book: @book %>
 
+    </div>
   </div>
   <div class="sidebar">
+   <div class="col-lg-8">
     <h1>Users</h1>
       <table>
         <% @users.each do |user| %>
@@ -22,4 +25,5 @@
         <% end %>
       </table>
   </div>
+ </div>
 </div>
