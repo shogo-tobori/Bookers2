@@ -2,56 +2,57 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
-      <h1 class="header-top">Bookers</h1>
-      <nav class="header-bottom">
-       <ul class="nav-list">
-      <% if user_signed_in? %>
-        <li class="nav-list-item">
-            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-          <%= link_to "logout", destroy_user_session_path, :style=>"color:gray;", method: :delete %>
-        </li>
-        <li class="nav-list-item">
-          <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-          <%= link_to "Books", books_path, :style=>"color:gray;" %>
-        </li>
-        <li class="nav-list-item">
-          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-          <%= link_to "User", users_path, :style=>"color:gray;" %>
-        </li>
-        <li class="nav-list-item">
-          <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-          <%= link_to "Home", user_path(current_user), :style=>"color:gray;"  %>
-        </li>
+      <div class="container">
+        <nav>
+          <span>Bookers</span>
+        </nav>
+        <nav>
+          <ul>
+          <% if user_signed_in? %>
+            <li class="nav-list-item">
+              <a class="glyphicon glyphicon-log-out" data-method="delete" href="/users/sign_out">logout</a>
+            </li>
+            <li class="nav-list-item">
+              <a class="glyphicon glyphicon-book" href="/books">Books</a>
+            <li class="nav-list-item">
+              <a class="glyphicon glyphicon-user" href="/users">Users</a>
+            </li>
+            <li class="nav-list-item">
+              <a class="glyphicon glyphicon-home" href="/users">Home</a>
+            </li>
+          </ul>
+        </nav>
       <% else %>
-        <li class="nav-list-item">
-          <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-          <%= link_to "login", new_user_session_path, :style=>"color:gray;" %>
-        </li>
-        <li class="nav-list-item">
-          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-          <%= link_to "sign up", new_user_registration_path, :style=>"color:gray;" %>
-        </li>
-        <li class="nav-list-item">
-          <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
-          <%= link_to "About", home_about_path, :style=>"color:gray;" %>
-        </li>
-        <li class="nav-list-item">
-          <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-          <%= link_to "Home", root_path, :style=>"color:gray;" %>
-        </li>
+       <nav>
+        <ul>
+          <li class="nav-list-item">
+            <a class="glyphicon glyphicon-log-in" href="/users/sign_in">login</a>
+          </li>
+          <li class="nav-list-item">
+            <a class="glyphicon glyphicon-edit" href="/users/sign_up">sign up</a>
+          </li>
+          <li class="nav-list-item">
+            <a class="glyphicon glyphicon-link" href="/home/about">About</a>
+          <li class="nav-list-item">
+            <a class="glyphicon glyphicon-home" href="/">Home</a>
+          </li>
         <% end %>
        </ul>
       </nav>
     </header>
     <%= yield %>
+    <footer>
+      <div class="footer">
+        <a class="font-size1">CopyRight Infratop.inc</a>
+      </div>
+    </footer>
   </body>
 </html>

@@ -55,8 +55,9 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'rspec-rails'
   gem "factory_bot_rails"
-  # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'faker'
+  # Easy installation and use of chromedriver to run system tests with Chrome
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

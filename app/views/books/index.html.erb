@@ -1,21 +1,22 @@
 <div class="main">
   <div class="blog">
-    <div class="col-lg-4">
+    <div class="col-lg-2">
 
     <%= render 'books/list' %>
 
     </div>
       <div class="sidebar">
-        <div class="col-lg-8">
+        <div class="col-lg-10">
+          <div class="container">
           <h1>Books</h1>
-          <table>
-            <tr class="page-header">
+          <table class="table">
+            <tr>
               <th></th>
               <th>Title</th>
               <th>Opinion</th>
             </tr>
             <% @books.each do |book| %>
-            <tr class="page-header">
+            <tr>
             <!-- 現在のユーザーだけ写真が小さくならない -->
               <td><%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %></td>
               <td><%= link_to(book.title, book_path(book)) %></td>
@@ -23,6 +24,7 @@
             </tr>
             <% end %>
           </table>
+        </div>
         </div>
       </div>
   </div>

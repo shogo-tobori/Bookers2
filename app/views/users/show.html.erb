@@ -1,16 +1,17 @@
 <div class="main">
  <div class="blog">
-  <div class="col-lg-4">
+  <div class="col-lg-2">
 
   <%= render 'books/list' %>
 
   </div>
  </div>
  <div class="sidebar">
-  <div class="col-lg-8">
-    <h1>Books</h1>
-      <table>
-          <tr class="page-header">
+  <div class="col-lg-10">
+      <div class="container">
+      <h1>Books</h1>
+      <table class="table">
+          <tr>
             <th></th>
             <th>Title</th>
             <th>Opinion</th>
@@ -23,6 +24,7 @@
           </tr>
         <% end %>
       </table>
+    </div>
   </div>
  </div>
 </div>
