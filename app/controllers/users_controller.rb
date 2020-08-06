@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   # before_action :current_user, only: [:edit, :update]
-  # before_action :authenticate_user!, except [:top, :about]
 
   def top
   end
@@ -25,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update
@@ -34,8 +33,7 @@ class UsersController < ApplicationController
         flash[:notice] = "You have updated user successfully."
         redirect_to user_path(@user.id)
     else
-        @user = current_user
-        render :edit
+        render "edit"
     end
   end
 
