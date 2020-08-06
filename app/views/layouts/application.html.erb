@@ -17,17 +17,21 @@
         <nav>
           <ul>
           <% if user_signed_in? %>
+           <div class="field">
             <li class="nav-list-item">
-              <a class="glyphicon glyphicon-log-out" data-method="delete" href="/users/sign_out">logout</a>
+              <%= link_to "Home", user_path(current_user), class: "glyphicon glyphicon-user" %>
             </li>
+            <li class="nav-list-item">
+              <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+              <%= link_to "logout", destroy_user_session_path, method: :delete, :style =>"color:grey;" %>
+            </li>
+          </div>
             <li class="nav-list-item">
               <a class="glyphicon glyphicon-book" href="/books">Books</a>
             <li class="nav-list-item">
               <a class="glyphicon glyphicon-user" href="/users">Users</a>
             </li>
-            <li class="nav-list-item">
-              <a class="glyphicon glyphicon-home" href="/users">Home</a>
-            </li>
+
           </ul>
         </nav>
       <% else %>

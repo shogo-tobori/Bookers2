@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
-# 確認OK
+  # before_action :current_user, only: [:edit, :update]
+  # before_action :authenticate_user!, except [:top, :about]
+
   def top
   end
-# 確認OK
+
   def about
   end
-# 確認OK
+
   def index
     # 部分テンプレート
     @book = Book.new
@@ -13,20 +15,7 @@ class UsersController < ApplicationController
     # ページ内容
     @users = User.all
   end
-# 確認OK
-  def create
-    # 部分テンプレート
-    @book = Book.new(book_params)
-    @book.user_id = current_user
-      if  @book.save
-          flash[:notice] = "You have creatad book successfully."
-          redirect_to user_path(@book)
-      else
-          @books = Book.all
-          render :index
-      end
-  end
-# 確認OK
+
 	def show
     # 部分テンプレート
     @book = Book.new
@@ -34,14 +23,14 @@ class UsersController < ApplicationController
     # ページ内容
     @books = @user.books
   end
-# 確認OK
+
   def edit
     @user = current_user
   end
-# 多分OK
+
   def update
-    @user = User.find(current_user.id)
-    if  @user.update(book_params)
+    @user = User.find(params[:id])
+    if  @user.update(user_params)
         flash[:notice] = "You have updated user successfully."
         redirect_to user_path(@user.id)
     else
@@ -50,8 +39,16 @@ class UsersController < ApplicationController
     end
   end
 
-  	private
-  	def book_params
+    private
+  	def user_params
     	params.require(:user).permit(:name, :introduction, :profile_image)
   	end
+
+  # private
+  #   def current_user
+  #     user = User.find(params[:id])
+  #     if current_user != user
+  #       redirect_to root_path
+  #     end
+  #   end
 end

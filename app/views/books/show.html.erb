@@ -6,27 +6,18 @@
         <h1>Book detail</h1>
         <table class="table">
           <tr>
-            <th></th>
- 	          <th></th>
- 	          <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-          <tr>
- 	          <td><%= attachment_image_tag @books.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
+ 	          <td>
+              <div class="field">
+                <%= attachment_image_tag @books.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %>
+                <%= link_to(@books.user.name, user_path(@user))%>
+              </div>
+            </td>
  	          <td><%= link_to(@books.title,book_path(@books)) %></td>
  	          <td><%= @books.body %></td>
           <% if @books.user.id == current_user.id %>
             <td><%= link_to 'edit', edit_book_path(@books) %></td>
             <td><%= link_to 'Destroy', book_path(@books), method: :delete, "data-confirm" => "Are you sure？" %></td>
           <% end %>
-          </tr>
-          <tr>
-            <td><%= link_to(@books.user.name, user_path(@user))%></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
           </tr>
         </table>
         </div>
