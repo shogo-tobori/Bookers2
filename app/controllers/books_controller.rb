@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
-  # before_action :current_user, only: [:edit, :update]
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
+  before_action :corrent_user, only: [:edit, :update]
+
+
 
   def index
     # 部分テンプレート
@@ -17,6 +19,7 @@ class BooksController < ApplicationController
       flash[:notice] = "You have creatad book successfully"
       redirect_to book_path(@book)
     else
+      @books = Book.all
       @user = current_user
       render :index
     end
@@ -55,11 +58,11 @@ class BooksController < ApplicationController
 		params.require(:book).permit(:title,:body)
 	end
 
-  # private
-  #   def current_user
-  #     book = Book.find(params[:id])
-  #     if  current_user != book.user_id
-  #         redirect_to root_path
-  #     end
-  # end
+private
+  def corrent_user
+    book = Book.find(params[:id])
+      if  current_user.id != book.user_id
+          redirect_to books_path
+      end
+  end
 end

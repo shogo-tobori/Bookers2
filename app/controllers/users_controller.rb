@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  # before_action :current_user, only: [:edit, :update]
+  before_action :authenticate_user!, except:[:top, :about]
+  before_action :corrent_user, only: [:edit, :update]
+
 
   def top
   end
@@ -37,16 +39,16 @@ class UsersController < ApplicationController
     end
   end
 
-    private
+  private
   	def user_params
     	params.require(:user).permit(:name, :introduction, :profile_image)
   	end
 
-  # private
-  #   def current_user
-  #     user = User.find(params[:id])
-  #     if current_user != user
-  #       redirect_to root_path
-  #     end
-  #   end
+  private
+    def corrent_user
+      user = User.find(params[:id])
+      if current_user != user
+        redirect_to user_path(current_user)
+      end
+    end
 end
