@@ -1,12 +1,14 @@
   <% if @book.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
+  <div class="row">
+    <div class="col-lg-3">
       <ul>
         <%= @book.errors.count %>errors prohibited this obj from being saved:<br>
         <% @book.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
-    <div>
+    </div>
+  </div>
   <% end %>
 
 <div class="container">
@@ -15,23 +17,27 @@
       <%= render 'books/list' %>
     </div>
       <div class="col-xs-9">
-          <table class="table">
-            <h1>Books</h1>
-            <tr>
-              <th></th>
-              <th>Title</th>
-              <th>Opinion</th>
-            </tr>
+        <h1>Books</h1>
+          <table class="table table-hover table-inverse">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Opinion</th>
+              </tr>
+            </thead>
             <% @books.each do |book| %>
-            <tr>
-              <td><%= link_to user_path(book.user) do %>
+            <tbody>
+              <tr>
+                <td><%= link_to user_path(book.user) do %>
                   <%= attachment_image_tag book.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %>
                   <% end %>
-              </td>
-              <td><%= link_to(book.title, book_path(book)) %></td>
-              <td><%= book.body %></td>
-            </tr>
+                </td>
+                <td><%= link_to(book.title, book_path(book)) %></td>
+                <td><%= book.body %></td>
+              </tr>
             <% end %>
+            </tbody>
           </table>
         </div>
     </div>

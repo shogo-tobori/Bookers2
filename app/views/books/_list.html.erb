@@ -1,34 +1,38 @@
-    <h1>User info</h1>
-      <div class="field">
-        <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %>
+<div class="field row">
+  <h1>User info</h1>
+  <div class="field row">
+    <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %>
+  </div>
+  <table class="table row">
+    <tr></tr>
+      <th>name</th>
+      <th><%= @user.name %></th>
+    <tr>
+      <th>introduction</th>
+      <th><%= @user.introduction %></th>
+    </tr>
+  </table>
+    <div class="field">
+      <%= link_to("", edit_user_path(@user), class: "btn btn-default glyphicon glyphicon-wrench col-xs-10") %>
+    </div>
+</div>
+
+<div class="field row">
+  <%= form_for(@book) do |f| %>
+    <div class="field row">
+      <h2>New book</h2>
+    </div>
+    <div class="field row">
+      <h5>Title</h5>
+        <%= f.text_field :title, class: "col-xs-10" %>
+    </div>
+    <div class="field row">
+      <h5>Opinion</h5>
+        <%= f.text_area :body, class: "col-xs-10" %>
+    </div>
+    <div class="field row">
+      <h5></h5>
+        <%= f.submit 'Create Book', class: "btn btn-primary col-xs-10" %>
       </div>
-      <table class="table">
-        <tr></tr>
-          <th>name</th>
-          <th><%= @user.name %></th>
-        <tr>
-          <th>introduction</th>
-          <th><%= @user.introduction %></th>
-        </tr>
-      </table>
-        <div class="field">
-          <%= link_to("", edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench") %>
-        </div>
-          <div class="field">
-          <%= form_for(@book) do |f| %>
-          <div class="field">
-            <h2>New book</h2>
-          </div>
-          <div class="field row">
-            <label for="book_title">Title</label>
-            <input class="col-xs-12 book_title" type="text" name="book[title]" id="book_title">
-          </div>
-          <div class="field row">
-            <label for="book_opinion">Opinion</label>
-            <textarea class="col-xs-12 book_body" name="book[body]" id="book_body"></textarea>
-          </div>
-          <div class="field">
-            <input type="submit" name="commit" value="Create Book" class="btn btn-primary col-xs-12" data-disable-with="Create Book">
-          </div>
-        <% end %>
-      </div>
+  <% end %>
+</div>
