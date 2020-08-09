@@ -1,9 +1,9 @@
-<div class="field row">
+<div class="field">
   <h1>User info</h1>
-  <div class="field row">
+  <div class="field">
     <%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no_image.jpg" %>
   </div>
-  <table class="table row">
+  <table class="table">
     <tr></tr>
       <th>name</th>
       <th><%= @user.name %></th>
@@ -17,20 +17,20 @@
     </div>
 </div>
 
-<div class="field row">
+<div class="field">
   <%= form_for(@book) do |f| %>
-    <div class="field row">
+    <div class="field">
       <h2>New book</h2>
     </div>
-    <div class="field row">
+    <div class="field">
       <h5>Title</h5>
         <%= f.text_field :title, class: "col-xs-10" %>
     </div>
-    <div class="field row">
+    <div class="field">
       <h5>Opinion</h5>
         <%= f.text_area :body, class: "col-xs-10" %>
     </div>
-    <div class="field row">
+    <div class="field">
       <h5></h5>
         <%= f.submit 'Create Book', class: "btn btn-primary col-xs-10" %>
       </div>

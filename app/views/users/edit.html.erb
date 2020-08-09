@@ -1,3 +1,4 @@
+<div class="container">
   <% if @user.errors.any? %>
   <div class="row">
     <div class="col-lg-3">
@@ -11,7 +12,8 @@
   </div>
   <% end %>
 
-<div class="container">
+<div class="row">
+  <div class="col-lg-3">
 	<h2>User info</h2>
 		<%= form_for(@user) do |f| %>
       <div class="field">
@@ -29,5 +31,7 @@
       <div class="action">
         <input type="submit" name="commit" value="Update User" data-disable-with="Update User">
       </div>
+    </div>
+  </div>
   <% end %>
 </div>

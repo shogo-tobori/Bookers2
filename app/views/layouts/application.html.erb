@@ -10,6 +10,7 @@
     <header class="navbar bavbar-fixed-top navbar-inverse">
       <div class="body">
         <div class="container">
+          <div class="row">
           <nav class="nav navbar-nav navbar-left">
             <span>Bookers</span>
           </nav>
@@ -47,15 +48,20 @@
         <% end %>
         </ul>
       </nav>
+      </div>
     </header>
+    <div class="row">
     <div class="col-lg-3">
     <%= render 'layouts/notifications'%>
     </div>
+    </div>
     <%= yield %>
     <footer>
+      <div class="row">
       <div class="col-xs-3 col-xs-offset-9">
         <p>CopyRight Infratop.inc</p>
       </div>
+    </div>
     </footer>
   </body>
 </html>
