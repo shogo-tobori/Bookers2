@@ -2,8 +2,6 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :corrent_user, only: [:edit, :update]
 
-
-
   def index
     # 部分テンプレート
     @book = Book.new
