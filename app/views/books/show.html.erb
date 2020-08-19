@@ -27,7 +27,10 @@
             <tr>
               <td><%= attachment_image_tag @books.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "no_image.jpg" %></td>
               <td><%= post_comment.comment %></td>
+              <% if post_comment.user == current_user %>
+              <td><%= link_to "Destroy", book_post_comment_path(post_comment.book, post_comment), method: :delete, class: "btn btn-danger pull-right" %></td>
             </tr>
+              <% end %>
             <% end %>
           </table>
             <%= form_for [@books, @post_comment] do |f| %>
