@@ -29,6 +29,7 @@ class BooksController < ApplicationController
     # ページ内容
     @books = Book.find(params[:id])
     @user = @books.user
+    @post_comment = PostComment.new
   end
 
 	def edit
