@@ -8,6 +8,7 @@ class BooksController < ApplicationController
     @user = current_user
     # ページ内容
     @books = Book.all
+    @reservations = Reservation.all
   end
 
   def create
